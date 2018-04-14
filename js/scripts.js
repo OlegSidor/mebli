@@ -69,8 +69,9 @@ function timerstart(){ // фукнція яка запускає таймер
   convert(timeleft); // Конвертувати данні в потрібні
   counter++; // Додає до відліку часу
 } else {
-    document.getElementsByClassName("CDT")[0].innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
-	document.getElementsByClassName("CDT")[1].innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
+	Array.prototype.forEach.call(document.getElementsByClassName("CDT"), function(el) {
+		el.innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
+	});
 }
 }
 function convert(time){ // Функція яка перетворює час
@@ -86,14 +87,18 @@ function convert(time){ // Функція яка перетворює час
   if(hour <= 9) hour = "0"+hour;
   if(min <= 9) min = "0"+min;
   if(sec <= 9) sec = "0"+sec;
-  tday[0].textContent = days; //Присвоюємо дні
-  thr[0].textContent = hour; //Присвоюємо години
-  tmin[0].textContent = min; //Присвоюємо хвилини
-  tsec[0].textContent = sec; //Присвоюємо секунди
-  tday[1].textContent = days; //Присвоюємо дні
-  thr[1].textContent = hour; //Присвоюємо години
-  tmin[1].textContent = min; //Присвоюємо хвилини
-  tsec[1].textContent = sec; //Присвоюємо секунди
+  	Array.prototype.forEach.call(tday, function(el) {
+		el.textContent = days; //Присвоюємо дні
+	});
+		Array.prototype.forEach.call(thr, function(el) {
+		el.textContent = hour;
+	});
+		Array.prototype.forEach.call(tmin, function(el) {
+		el.textContent = min;
+	});
+		Array.prototype.forEach.call(tsec, function(el) {
+		el.textContent = sec;
+		});
           //Якщо щось не зрозуміло звертайся
 }
 // function CDT(){
