@@ -69,14 +69,15 @@ function timerstart(){ // фукнція яка запускає таймер
   convert(timeleft); // Конвертувати данні в потрібні
   counter++; // Додає до відліку часу
 } else {
-  document.getElementById("CDT").innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
+    document.getElementsByClassName("CDT")[0].innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
+	document.getElementsByClassName("CDT")[1].innerHTML = '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>';
 }
 }
 function convert(time){ // Функція яка перетворює час
-  var tday = document.getElementById("timer_day"); // Беремо з таймера дні
-  var thr = document.getElementById("timer_hr"); // години
-  var tmin = document.getElementById("timer_min"); // мінути
-  var tsec = document.getElementById("timer_sec"); // секунди
+  var tday = document.getElementsByClassName("timer_day"); // Беремо з таймера дні
+  var thr = document.getElementsByClassName("timer_hr"); // години
+  var tmin = document.getElementsByClassName("timer_min"); // мінути
+  var tsec = document.getElementsByClassName("timer_sec"); // секунди
   var days = Math.floor(time/60/60/24); //вираховуємо скільки лишилося днів
   var hour = Math.floor(time/60/60-days*24); //вираховуємо скільки лишилося годин
   var min = Math.floor((((time/60)-hour*60)-days*24*60)); //вираховуємо скільки лишилося мінут
@@ -85,11 +86,14 @@ function convert(time){ // Функція яка перетворює час
   if(hour <= 9) hour = "0"+hour;
   if(min <= 9) min = "0"+min;
   if(sec <= 9) sec = "0"+sec;
-  tday.textContent = days; //Присвоюємо дні
-  thr.textContent = hour; //Присвоюємо години
-  tmin.textContent = min; //Присвоюємо хвилини
-  tsec.textContent = sec; //Присвоюємо секунди
-
+  tday[0].textContent = days; //Присвоюємо дні
+  thr[0].textContent = hour; //Присвоюємо години
+  tmin[0].textContent = min; //Присвоюємо хвилини
+  tsec[0].textContent = sec; //Присвоюємо секунди
+  tday[1].textContent = days; //Присвоюємо дні
+  thr[1].textContent = hour; //Присвоюємо години
+  tmin[1].textContent = min; //Присвоюємо хвилини
+  tsec[1].textContent = sec; //Присвоюємо секунди
           //Якщо щось не зрозуміло звертайся
 }
 // function CDT(){
